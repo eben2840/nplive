@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "de.npapp.app",
+      "sha256_cert_fingerprints": [
+        "14:18:29:0E:9D:F2:68:A1:A3:0D:C1:20:B6:02:77:59:96:FF:2D:F7:42:D1:7C:A8:FE:7B:39:4B:73:EF:D5:8C",
+        "A0:53:2E:8A:4F:85:72:24:65:1A:64:6B:55:AE:84:B3:8A:CF:03:32:B9:41:3A:5F:5E:45:5F:FA:32:13:0C:05"
+      ]
+    }
+  }
+]

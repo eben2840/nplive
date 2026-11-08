@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "KLF96HKTXU.de.npapp.app",
+        "appIDs": ["KLF96HKTXU.de.npapp.app"],
+        "paths": ["/booking", "/booking/*"],
+        "components": [{ "/": "/booking*", "comment": "Event links" }]
+      }
+    ]
+  }
+}

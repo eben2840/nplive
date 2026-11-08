@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Book on NP App | New Project</title>
+    <meta name="description" content="Open this event in NP App to book your ticket.">
+    <meta property="og:title" content="Book on NP App">
+    <meta property="og:description" content="Open this event in NP App to book your ticket.">
+    <meta property="og:image" content="https://newproject.live/booking/app-icon.png">
+    <link rel="icon" type="image/png" href="app-icon.png">
+    <style>
+        :root { --ink: #111111; --muted: #6b6b6b; --line: #e6e6e6; --bg: #ffffff; }
+        @media (prefers-color-scheme: dark) { :root { --ink: #f5f5f5; --muted: #a3a3a3; --line: #2a2a2a; --bg: #0e0e0e; } }
+        * { box-sizing: border-box; }
+        body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+               padding: 24px 16px; background: var(--bg); color: var(--ink);
+               font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        main { width: 100%; max-width: 380px; text-align: center; }
+        img { width: 88px; height: 88px; border-radius: 20px; border: 1px solid var(--line); }
+        h1 { font-size: 26px; margin: 20px 0 8px; letter-spacing: -0.02em; }
+        p { color: var(--muted); line-height: 1.5; margin: 0 0 28px; }
+        a.store { display: block; padding: 15px; margin-bottom: 12px; border-radius: 12px; font-weight: 600;
+                  text-decoration: none; border: 1px solid var(--ink); color: var(--ink); }
+        a.store.primary { background: var(--ink); color: var(--bg); }
+        small { display: block; margin-top: 16px; color: var(--muted); }
+        small a { color: inherit; }
+    </style>
+</head>
+<body>
+    <main>
+        <img src="app-icon.png" alt="NP App">
+        <h1>Book on NP App</h1>
+        <p>Get the NP App to see this event and book your ticket.</p>
+        <a class="store primary" id="ios" href="https://apps.apple.com/app/id6808212163">Download on the App Store</a>
+        <a class="store" id="android" href="https://play.google.com/store/apps/details?id=de.npapp.app">Get it on Google Play</a>
+        <small><a href="/">newproject.live</a></small>
+    </main>
+    <script>
+        (function () {
+            var ua = navigator.userAgent || '';
+            var isIos = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            var isAndroid = /Android/.test(ua);
+            if (isIos) location.replace(document.getElementById('ios').href);
+            else if (isAndroid) location.replace(document.getElementById('android').href);
+        })();
+    </script>
+</body>
+</html>

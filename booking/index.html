@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <!-- Only this site's files may run; the page may only talk to the NP Supabase project. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src https://dcnnaoygtxswlhctyktc.supabase.co; form-action 'none'; base-uri 'none'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' https:; connect-src https://dcnnaoygtxswlhctyktc.supabase.co; form-action 'none'; base-uri 'none'">
     <meta name="referrer" content="no-referrer">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Book on NP App | New Project</title>
@@ -16,37 +16,41 @@
 </head>
 <body>
     <main>
-        <img src="app-icon.png" alt="NP App">
-        <h1>Book on NP App</h1>
-        <!-- Web booking on every device (book.js); the app downloads follow underneath -->
-        <section id="webbook" hidden>
-            <h2 id="wb-title">Reserve your ticket</h2>
-            <form id="wb-form">
-                <label for="wb-type">Ticket</label><select id="wb-type" required></select>
-                <label for="wb-first">First name</label><input id="wb-first" autocomplete="given-name" required>
-                <label for="wb-last">Last name</label><input id="wb-last" autocomplete="family-name" required>
-                <label for="wb-email">Email</label><input id="wb-email" type="email" autocomplete="email" required>
-                <button>Send code</button>
-            </form>
-            <form id="wb-code" hidden>
-                <p id="wb-sent"></p>
-                <input id="wb-otp" inputmode="numeric" maxlength="6" pattern="\d{6}" autocomplete="one-time-code" required>
-                <button>Reserve</button>
-            </form>
-            <p id="wb-done" hidden></p>
-            <p id="wb-err"></p>
-        </section>
-        <p>Get the NP App to see this event and book your ticket.</p>
-        <a class="store primary" id="ios" href="https://apps.apple.com/app/id6808212163">Download on the App Store</a>
-        <!-- Android app is in beta: join the tester group, opt in, then install -->
-        <section id="android">
+        <!-- Left column: the app and its downloads -->
+        <section id="app">
+            <img class="icon" src="app-icon.png" alt="NP App">
+            <h1>Book on NP App</h1>
+            <p>Get the NP App to see this event and book your ticket.</p>
+            <a class="store primary" id="ios" href="https://apps.apple.com/app/id6808212163">Download on the App Store</a>
+            <!-- Android app is in beta: join the tester group, opt in, then install -->
             <h2>Reserve on our Android beta</h2>
             <p>Follow these steps from 1 to 3 in order to install.</p>
             <a class="store" href="https://groups.google.com/g/np-beta" target="_blank">1. Join the beta group</a>
             <a class="store" href="https://play.google.com/apps/testing/de.npapp.app" target="_blank">2. Become a beta</a>
             <a class="store" href="https://play.google.com/store/apps/details?id=de.npapp.app">3. Install from Google Play</a>
+            <small><a href="https://newproject.live">newproject.live</a></small>
         </section>
-        <small><a href="https://newproject.live">newproject.live</a></small>
+        <!-- Right column: event image on top, web booking under it (book.js) -->
+        <section id="webbook" hidden>
+            <img id="wb-image" alt="" hidden>
+            <div id="wb-body">
+                <h2 id="wb-title">Reserve your ticket</h2>
+                <form id="wb-form">
+                    <label for="wb-type">Ticket</label><select id="wb-type" required></select>
+                    <label for="wb-first">First name</label><input id="wb-first" autocomplete="given-name" required>
+                    <label for="wb-last">Last name</label><input id="wb-last" autocomplete="family-name" required>
+                    <label for="wb-email">Email</label><input id="wb-email" type="email" autocomplete="email" required>
+                    <button>Send code</button>
+                </form>
+                <form id="wb-code" hidden>
+                    <p id="wb-sent"></p>
+                    <input id="wb-otp" inputmode="numeric" maxlength="6" pattern="\d{6}" autocomplete="one-time-code" required>
+                    <button>Reserve</button>
+                </form>
+                <p id="wb-done" hidden></p>
+                <p id="wb-err"></p>
+            </div>
+        </section>
     </main>
     <script src="book.js"></script>
 </body>

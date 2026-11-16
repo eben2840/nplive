@@ -39,7 +39,7 @@
   }
 
   async function load() {
-    var events = await api('/rest/v1/events?select=title,status&id=eq.' + eventId);
+    var events = await api('/rest/v1/events?select=title,status,cover_image_path&id=eq.' + eventId);
     if (!events.length || events[0].status !== 'published') return;
     var types = await api('/rest/v1/ticket_types?select=id,name,gross_price_cents,is_free,is_reserved,' +
       'is_private,quantity_total,quantity_reserved&order=sort_order&event_id=eq.' + eventId);
@@ -54,7 +54,15 @@
       option.disabled = left <= 0;
       $('wb-type').add(option);
     });
+    var cover = events[0].cover_image_path || '';
+    if (/^https:\/\//.test(cover)) {
+      $('wb-image').onerror = function () { $('wb-image').hidden = true; };
+      $('wb-image').alt = events[0].title;
+      $('wb-image').src = cover;
+      $('wb-image').hidden = false;
+    }
     $('webbook').hidden = false;
+    document.querySelector('main').className = 'two'; // two columns once there is a form
   }
 
   $('wb-form').addEventListener('submit', async function (e) {

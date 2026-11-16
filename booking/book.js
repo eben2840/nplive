@@ -1,15 +1,10 @@
-// iPhone: straight to the App Store. Android (until the Play app is public): reserve a free /
-// pay-at-door ticket for ?id= with the app's fn_create_booking after a 6-digit email code.
+// Every device: reserve a free / pay-at-door ticket for ?id= with the app's fn_create_booking
+// after a 6-digit email code. The app download links stay underneath the form.
 // Plain fetch to Supabase, no library or CDN; token kept in memory only, logged out after
 // booking; all text set with textContent, never as HTML.
 (function () {
   if (window.top !== window.self) { document.body.hidden = true; return; } // refuse to be framed
   var $ = function (id) { return document.getElementById(id); };
-  var ua = navigator.userAgent || '';
-  var isIos = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  if (isIos) { location.replace($('ios').href); return; }
-  if (!/Android/.test(ua)) return;
-  $('ios').hidden = true;
 
   var BASE = 'https://dcnnaoygtxswlhctyktc.supabase.co';
   var KEY = 'sb_publishable_T-0xOKcMcfv7LaElPlf_MQ__IUyoF64'; // public key, same as in the app; the database rules protect the data

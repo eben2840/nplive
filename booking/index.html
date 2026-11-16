@@ -18,9 +18,7 @@
     <main>
         <img src="app-icon.png" alt="NP App">
         <h1>Book on NP App</h1>
-        <p>Get the NP App to see this event and book your ticket.</p>
-        <a class="store primary" id="ios" href="https://apps.apple.com/app/id6808212163">Download on the App Store</a>
-        <!-- Android web booking until the Play app is public (book.js) -->
+        <!-- Web booking on every device (book.js); the app downloads follow underneath -->
         <section id="webbook" hidden>
             <h2 id="wb-title">Reserve your ticket</h2>
             <form id="wb-form">
@@ -38,6 +36,8 @@
             <p id="wb-done" hidden></p>
             <p id="wb-err"></p>
         </section>
+        <p>Get the NP App to see this event and book your ticket.</p>
+        <a class="store primary" id="ios" href="https://apps.apple.com/app/id6808212163">Download on the App Store</a>
         <!-- Android app is in beta: join the tester group, opt in, then install -->
         <section id="android">
             <h2>Reserve on our Android beta</h2>

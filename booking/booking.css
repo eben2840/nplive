@@ -1,38 +1,85 @@
-:root { --ink: #111111; --muted: #6b6b6b; --line: #e6e6e6; --bg: #ffffff; --card: #fafafa; }
-@media (prefers-color-scheme: dark) { :root { --ink: #f5f5f5; --muted: #a3a3a3; --line: #2a2a2a; --bg: #0e0e0e; --card: #161616; } }
+:root { color-scheme: dark; --ink: #ffffff; --muted: rgba(255,255,255,.74); --line: rgba(255,255,255,.3);
+        --panel: rgba(18,18,18,.84); --row: rgba(255,255,255,.1); }
 * { box-sizing: border-box; }
 body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
-       padding: 24px 16px; background: var(--bg); color: var(--ink);
+       padding: 24px 16px; background: #3b3b3b; color: var(--ink); font-size: 15px;
        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-main { width: 100%; max-width: 380px; text-align: center; }
-/* With an event to book: form card first on phones, app left and card right on wide screens. */
-main.two { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
-main.two #webbook { order: -1; }
-@media (min-width: 800px) {
-  main.two { max-width: 880px; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-  main.two #webbook { order: 0; }
+/* The flyer, blurred, tints the whole page behind the panels (set by event.js). */
+#bg { position: fixed; inset: -80px; z-index: -1; background: center / cover no-repeat;
+      filter: blur(60px) saturate(1.2); }
+#bg::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.25); }
+main { width: 100%; max-width: 420px; }
+/* With an event: one column on phones (tickets right after the date), two on wide screens. */
+#col-a, #col-b { display: contents; }
+main.two { display: flex; flex-direction: column; gap: 16px; }
+#ev-head { order: 1; } #ev-when { order: 2; } #webbook { order: 3; }
+#ev-facts { order: 4; } #ev-about { order: 5; } #app { order: 6; }
+@media (min-width: 860px) {
+  main.two { max-width: 1080px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+             gap: 40px; align-items: start; }
+  main.two #col-a, main.two #col-b { display: flex; flex-direction: column; gap: 16px; }
 }
-.icon { width: 88px; height: 88px; border-radius: 20px; border: 1px solid var(--line); }
-h1 { font-size: 26px; margin: 20px 0 8px; letter-spacing: -0.02em; }
-p { color: var(--muted); line-height: 1.5; margin: 0 0 28px; }
-a.store { display: block; padding: 15px; margin-bottom: 12px; border-radius: 12px; font-weight: 600;
-          text-decoration: none; border: 1px solid var(--ink); color: var(--ink); }
-a.store.primary { background: var(--ink); color: var(--bg); }
-small { display: block; margin-top: 16px; color: var(--muted); }
-small a { color: inherit; }
-h2 { font-size: 15px; margin: 24px 0 12px; }
-#webbook { border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: var(--card);
-           text-align: left; }
-#wb-image { display: block; width: 100%; max-height: 420px; object-fit: cover; }
-#wb-body { padding: 20px; }
-#wb-title { font-size: 18px; margin: 0 0 16px; }
-label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
-input, select { width: 100%; padding: 13px; margin-bottom: 14px; border-radius: 12px; font: inherit;
-                font-size: 16px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
-button { width: 100%; padding: 15px; border: 0; border-radius: 12px; font: inherit; font-weight: 600;
-         background: var(--ink); color: var(--bg); }
+.panel { background: var(--panel); box-shadow: 0 10px 30px rgba(0,0,0,.3); }
+.pad { padding: 22px; }
+.frame { padding: 12px; background: rgba(0,0,0,.45); }
+#wb-image { display: block; width: 100%; }
+h1 { margin: 0 0 14px; font-size: clamp(30px, 6vw, 46px); line-height: 1; font-weight: 800;
+     letter-spacing: -0.02em; text-transform: uppercase; overflow-wrap: anywhere; }
+.big { display: block; margin: 0 0 6px; font-size: 21px; font-weight: 800; letter-spacing: -0.01em;
+       text-transform: uppercase; }
+.label, .tag, .chips span, .tix-name { font-size: 11px; font-weight: 700; letter-spacing: .2em;
+                                       text-transform: uppercase; }
+.label { display: block; margin-bottom: 8px; color: var(--muted); }
+.label.beta { margin-top: 22px; color: var(--ink); }
+.tag, .chips span { display: inline-block; padding: 6px 10px; border: 1px solid var(--line);
+                    background: var(--row); }
+.tag { margin-bottom: 12px; font-size: 13px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+p { margin: 0 0 16px; color: var(--muted); line-height: 1.5; }
+.strong { margin: 0; color: var(--ink); font-weight: 700; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 20px; }
+#ev-dates { margin: 0; padding: 0 0 0 18px; line-height: 1.8; }
+#ev-address { margin: 4px 0 0; text-transform: capitalize; }
+summary { position: relative; cursor: pointer; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: ''; position: absolute; right: 4px; top: 12px; width: 9px; height: 9px;
+                 border-right: 2px solid; border-bottom: 2px solid; transform: rotate(45deg); }
+details[open] summary::after { top: 18px; transform: rotate(-135deg); }
+summary .big { margin: 0; }
+#ev-text { margin: 14px 0 0; white-space: pre-line; }
+/* One row per ticket: name and note left, price and Select / Sold out right. */
+.tix { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 8px 12px;
+       align-items: center; padding: 16px; margin-bottom: 12px; border: 1px solid var(--line);
+       background: var(--row); cursor: pointer; }
+.tix input { position: absolute; opacity: 0; pointer-events: none; }
+.tix-price { font-weight: 700; text-align: right; }
+.tix-sub { color: var(--muted); font-size: 14px; }
+.tix-state { padding: 8px 14px; border: 1px solid var(--line); font-size: 12px; font-weight: 800;
+             letter-spacing: .08em; text-transform: uppercase; text-align: center; }
+.tix-state::after { content: 'Select'; }
+.tix input:checked ~ .tix-state { background: var(--ink); border-color: var(--ink); color: #111; }
+.tix input:checked ~ .tix-state::after { content: 'Selected'; }
+.tix input:disabled ~ .tix-state::after { content: 'Sold out'; }
+.tix input:disabled ~ span { opacity: .6; }
+.tix:has(input:checked) { border-color: var(--ink); background: rgba(255,255,255,.18); }
+.tix:has(input:disabled) { cursor: default; }
+.tix input:focus-visible ~ .tix-state { outline: 2px solid var(--ink); outline-offset: 2px; }
+form label:not(.tix) { display: block; margin-bottom: 6px; font-size: 13px; color: var(--muted); }
+input:not([type=radio]) { width: 100%; padding: 13px; margin-bottom: 14px; border: 1px solid var(--line);
+                          border-radius: 0; background: var(--row); color: var(--ink); font: inherit;
+                          font-size: 16px; }
+button, a.store { display: block; width: 100%; padding: 15px; border: 1px solid var(--line);
+                  border-radius: 0; background: var(--row); color: var(--ink); font: inherit;
+                  font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+                  text-align: center; text-decoration: none; cursor: pointer; }
+button, a.store.primary { background: var(--ink); border-color: var(--ink); color: #111; }
+a.store { margin-bottom: 12px; }
 button:disabled { opacity: .5; }
 #wb-otp { text-align: center; font-size: 28px; letter-spacing: 10px; }
 #wb-done { margin: 0; color: var(--ink); }
-#wb-err { color: #d33; margin: 12px 0 0; min-height: 1em; }
+#wb-err { color: #ff8a80; margin: 12px 0 0; min-height: 1em; }
+#app { text-align: center; }
+.icon { width: 72px; height: 72px; margin-bottom: 14px; border-radius: 16px; }
+small { display: block; margin-top: 16px; color: var(--muted); }
+small a { color: inherit; }
 [hidden] { display: none !important; }

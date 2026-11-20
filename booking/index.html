@@ -15,28 +15,37 @@
     <link rel="stylesheet" href="booking.css">
 </head>
 <body>
+    <div id="bg"></div>
     <main>
-        <!-- Left column: the app and its downloads -->
-        <section id="app">
-            <img class="icon" src="app-icon.png" alt="NP App">
-            <h1>Book on NP App</h1>
-            <p>Get the NP App to see this event and book your ticket.</p>
-            <a class="store primary" id="ios" href="https://apps.apple.com/app/id6808212163">Download on the App Store</a>
-            <!-- Android app is in beta: join the tester group, opt in, then install -->
-            <h2>Reserve on our Android beta</h2>
-            <p>Follow these steps from 1 to 3 in order to install.</p>
-            <a class="store" href="https://groups.google.com/g/np-beta" target="_blank">1. Join the beta group</a>
-            <a class="store" href="https://play.google.com/apps/testing/de.npapp.app" target="_blank">2. Become a beta</a>
-            <a class="store" href="https://play.google.com/store/apps/details?id=de.npapp.app">3. Install from Google Play</a>
-            <small><a href="https://newproject.live">newproject.live</a></small>
-        </section>
-        <!-- Right column: event image on top, web booking under it (book.js) -->
-        <section id="webbook" hidden>
-            <img id="wb-image" alt="" hidden>
-            <div id="wb-body">
-                <h2 id="wb-title">Reserve your ticket</h2>
+        <!-- Left column: the event (event.js fills it) -->
+        <div id="col-a">
+            <section id="ev-head" class="panel" hidden>
+                <div id="ev-frame" class="frame" hidden><img id="wb-image" alt=""></div>
+                <div class="pad">
+                    <h1 id="ev-title"></h1>
+                    <div id="ev-chips" class="chips"></div>
+                </div>
+            </section>
+            <section id="ev-when" class="panel pad cols" hidden>
+                <div><span class="tag">Date</span><ul id="ev-dates"></ul></div>
+                <div id="ev-place"><span class="tag">Location</span><p id="ev-venue" class="strong"></p><p id="ev-address"></p></div>
+            </section>
+            <section id="ev-facts" class="panel pad cols" hidden>
+                <div id="ev-note-box"><span class="label">Good to know</span><p id="ev-note" class="strong"></p></div>
+                <div id="ev-cancel-box"><span class="label">Cancellation</span><p id="ev-cancel" class="strong"></p></div>
+            </section>
+            <details id="ev-about" class="panel pad" hidden>
+                <summary><span class="label">More details</span><span class="big">About the event</span></summary>
+                <p id="ev-text"></p>
+            </details>
+        </div>
+        <!-- Right column: web booking on every device (book.js), then the app downloads -->
+        <div id="col-b">
+            <section id="webbook" class="panel pad" hidden>
+                <h2 class="big">Reserve your ticket</h2>
                 <form id="wb-form">
-                    <label for="wb-type">Ticket</label><select id="wb-type" required></select>
+                    <p>Choose your ticket and enter your details.</p>
+                    <div id="wb-types"></div>
                     <label for="wb-first">First name</label><input id="wb-first" autocomplete="given-name" required>
                     <label for="wb-last">Last name</label><input id="wb-last" autocomplete="family-name" required>
                     <label for="wb-email">Email</label><input id="wb-email" type="email" autocomplete="email" required>
@@ -49,9 +58,23 @@
                 </form>
                 <p id="wb-done" hidden></p>
                 <p id="wb-err"></p>
-            </div>
-        </section>
+            </section>
+            <section id="app" class="panel pad">
+                <img class="icon" src="app-icon.png" alt="NP App">
+                <h2 class="big">Book on NP App</h2>
+                <p>Get the NP App to see this event and book your ticket.</p>
+                <a class="store primary" id="ios" href="https://apps.apple.com/app/id6808212163">Download on the App Store</a>
+                <!-- Android app is in beta: join the tester group, opt in, then install -->
+                <span class="label beta">Reserve on our Android beta</span>
+                <p>Follow these steps from 1 to 3 in order to install.</p>
+                <a class="store" href="https://groups.google.com/g/np-beta" target="_blank">1. Join the beta group</a>
+                <a class="store" href="https://play.google.com/apps/testing/de.npapp.app" target="_blank">2. Become a beta</a>
+                <a class="store" href="https://play.google.com/store/apps/details?id=de.npapp.app">3. Install from Google Play</a>
+                <small><a href="https://newproject.live">newproject.live</a></small>
+            </section>
+        </div>
     </main>
     <script src="book.js"></script>
+    <script src="event.js"></script>
 </body>
 </html>

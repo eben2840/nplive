@@ -59,10 +59,19 @@
     var input = el('input');
     input.type = 'radio'; input.name = 'wb-type'; input.value = t.id; input.required = true;
     input.disabled = t.quantity_total - t.quantity_reserved <= 0;
+    if (t.is_private) input.dataset.private = '1';
     row.append(input, el('span', 'tix-name', t.name),
       el('span', 'tix-price', atDoor ? '€' + (t.gross_price_cents / 100).toFixed(2) : 'Free'),
-      el('span', 'tix-sub', atDoor ? 'Pay at the door' : 'Free ticket'), el('span', 'tix-state'));
+      el('span', 'tix-sub', t.is_private ? 'Private · access code needed' : atDoor ? 'Pay at the door' : 'Free ticket'),
+      el('span', 'tix-state'));
     return row;
+  }
+
+  // The access code field shows only while a private ticket is selected.
+  function syncAccess() {
+    var type = document.querySelector('input[name="wb-type"]:checked');
+    $('wb-access-box').hidden = !(type && type.dataset.private);
+    $('wb-access').required = !$('wb-access-box').hidden;
   }
 
   async function load() {
@@ -72,12 +81,13 @@
     if (!events.length || events[0].status !== 'published') return;
     var types = await NP.api('/rest/v1/ticket_types?select=id,name,gross_price_cents,is_free,is_reserved,' +
       'is_private,quantity_total,quantity_reserved&order=sort_order&event_id=eq.' + NP.eventId);
-    var open = types.filter(function (t) { return t.is_free && !t.is_private; });
+    var open = types.filter(function (t) { return t.is_free; }); // private ones ask for their code
     if (!open.length) return;
     drawEvent(events[0]);
     open.forEach(function (t) { $('wb-types').append(ticketRow(t)); });
     var first = $('wb-types').querySelector('input:not(:disabled)');
     if (first) first.checked = true; else $('wb-form').querySelector('button').disabled = true;
+    $('wb-types').addEventListener('change', syncAccess); syncAccess();
     $('webbook').hidden = false;
     document.querySelector('main').className = 'two'; // two columns once there is an event
   }

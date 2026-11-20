@@ -13,7 +13,8 @@
     CAPACITY_EXCEEDED: 'Sorry, this ticket is sold out.',
     EVENT_NOT_BOOKABLE: 'Booking is closed for this event.',
     DEADLINE_PASSED: 'Booking is closed for this event.',
-    SALES_CLOSED: 'Sales for this ticket have ended.'
+    SALES_CLOSED: 'Sales for this ticket have ended.',
+    ACCESS_CODE_INVALID: 'Wrong access code.'
   };
   var eventId = new URLSearchParams(location.search).get('id') || '';
   if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(eventId)) return;
@@ -38,9 +39,37 @@
     return code ? ERRORS[code] : 'Something went wrong. Please try again.';
   }
 
+  var token = null; // signed in only between the email code and the booking
+
+  async function reserve(button) {
+    var type = document.querySelector('input[name="wb-type"]:checked');
+    try {
+      var booking = await api('/rest/v1/rpc/fn_create_booking', {
+        p_event_id: eventId, p_ticket_type_id: type.value, p_quantity: 1,
+        p_first_name: val('wb-first'), p_last_name: val('wb-last'),
+        p_attendees: [{ first_name: val('wb-first'), last_name: val('wb-last') }], p_marketing_opt_in: false,
+        p_access_code: type.dataset.private ? val('wb-access') : null
+      }, token);
+      $('wb-form').hidden = $('wb-code').hidden = true;
+      $('wb-done').hidden = false;
+      $('wb-done').textContent = 'You are booked! Booking ' + booking.booking_number +
+        '. Your ticket is on its way to your email.';
+    } catch (error) {
+      fail(messageOf(error), button);
+      if (error.message.indexOf('ACCESS_CODE_INVALID') >= 0) { // back to the form to fix the code
+        var again = $('wb-form').querySelector('button');
+        again.textContent = 'Reserve'; again.disabled = false;
+        $('wb-code').hidden = true; $('wb-form').hidden = false; $('wb-access').focus();
+        return; // stays signed in, so no second email code is needed
+      }
+    }
+    api('/auth/v1/logout', {}, token).catch(function () {}); token = null;
+  }
+
   $('wb-form').addEventListener('submit', async function (e) {
     e.preventDefault();
     var button = e.submitter; button.disabled = true; fail('');
+    if (token) return reserve(button); // email already confirmed, only the access code was wrong
     try {
       await api('/auth/v1/otp', { email: val('wb-email'), create_user: true,
         data: { first_name: val('wb-first'), last_name: val('wb-last') } });
@@ -53,22 +82,10 @@
   $('wb-code').addEventListener('submit', async function (e) {
     e.preventDefault();
     var button = e.submitter; button.disabled = true; fail('');
-    var token;
     try {
       token = (await api('/auth/v1/verify', { type: 'email', email: val('wb-email'), token: val('wb-otp') })).access_token;
     } catch (_) { return fail('Wrong or expired code.', button); }
-    try {
-      var booking = await api('/rest/v1/rpc/fn_create_booking', {
-        p_event_id: eventId, p_ticket_type_id: document.querySelector('input[name="wb-type"]:checked').value, p_quantity: 1,
-        p_first_name: val('wb-first'), p_last_name: val('wb-last'),
-        p_attendees: [{ first_name: val('wb-first'), last_name: val('wb-last') }], p_marketing_opt_in: false
-      }, token);
-      $('wb-code').hidden = true;
-      $('wb-done').hidden = false;
-      $('wb-done').textContent = 'You are booked! Booking ' + booking.booking_number +
-        '. Your ticket is on its way to your email.';
-    } catch (error) { fail(messageOf(error), button); }
-    finally { api('/auth/v1/logout', {}, token).catch(function () {}); token = null; }
+    await reserve(button);
   });
 
   window.NP = { $: $, api: api, eventId: eventId }; // for event.js

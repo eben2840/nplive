@@ -1,298 +1,73 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html lang="en">
 <head>
-
-    <!--- basic page needs
-    ================================================== -->
     <meta charset="utf-8">
-    <title>New Project | Creative Space for Art, Music, Poetry &amp; Film</title>
-    <meta name="description" content="New Project is a creative space for art, music, poetry, and film.">
-    <meta name="author" content="New Project">
-    <meta property="og:title" content="New Project">
-    <meta property="og:description" content="A creative space for art, music, poetry, and film.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="newpool.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="newpool.png">
-
-    <!-- mobile specific metas
-    ================================================== -->
+    <!-- Static page: only this site's styles and images load, no scripts. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; form-action 'none'; base-uri 'none'">
+    <meta name="referrer" content="no-referrer">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSS
-    ================================================== -->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/main.css">
-
-    <!-- script
-    ================================================== -->
-    <script src="js/modernizr.js"></script>
-
-    <!-- favicons
-    ================================================== -->
-    <link rel="apple-touch-icon" sizes="180x180" href="np.PNG">
-    <link rel="icon" type="image/png" sizes="32x32" href="np.PNG">
-    <link rel="icon" type="image/png" sizes="16x16" href="np.PNG">
-    <link rel="manifest" href="site.webmanifest">
-
+    <title>NP App | New Project</title>
+    <meta name="description" content="NP App brings every New Project event to your phone: find events, reserve your ticket and share the moments.">
+    <meta property="og:title" content="NP App | New Project">
+    <meta property="og:description" content="Find events, reserve your ticket and share the moments.">
+    <meta property="og:image" content="https://app.newproject.live/booking/app-icon.png">
+    <link rel="icon" type="image/png" href="booking/app-icon.png">
+    <link rel="stylesheet" href="landing.css">
 </head>
-
-<body id="top">
-
-    <!-- preloader ================================================== -->
-    <div id="preloader">
-        <div id="loader" class="dots-jump">
-            <div></div>
-            <div></div>
-            <div></div>
+<body>
+    <header class="wrap top">
+        <a class="brand" href="/"><img src="booking/app-icon.png" alt="">NP App</a>
+    </header>
+    <!-- Hero: what the app is, the two downloads, the home screen -->
+    <section class="wrap split hero">
+        <div>
+            <h1>Art and creativity, all in one place</h1>
+            <p class="lead">NP App brings every New Project event to your phone: find events, reserve your ticket and share the moments.</p>
+            <div class="stores">
+                <a class="store" href="https://apps.apple.com/app/id6808212163"><small>Download on the</small>App Store</a>
+                <a class="store" href="#android"><small>Android beta on</small>Google Play</a>
+            </div>
         </div>
-    </div>
-
-
-    <!-- header
-    ================================================== -->
-    <header class="s-header">
-
-        <div class="header-logo">
-            <a class="site-logo" href="index.html">
-                <img src="newpool.png" alt="New Project homepage">
-            </a>
+        <div class="stage"><div class="phone"><img src="landing/home.jpg" alt="NP App home screen"></div></div>
+    </section>
+    <section class="why">
+        <div class="wrap">
+            <p class="kicker">Our highlights</p>
+            <h2>Why you will love the app</h2>
+            <div class="cards">
+                <article class="card">
+                    <div class="shot"><div class="phone"><img src="landing/discover.jpg" alt="Event calendar in NP App"></div></div>
+                    <h3>Every event in one place</h3>
+                    <p>Concerts, festivals, workshops and online sessions, with search, filters and clear time and location details.</p>
+                </article>
+                <article class="card">
+                    <div class="shot"><div class="phone"><img src="landing/book.jpg" alt="Event page in NP App"></div></div>
+                    <h3>Booked in a few steps</h3>
+                    <p>Pick a ticket, check your details, done. Your ticket is reserved instantly.</p>
+                </article>
+                <article class="card">
+                    <div class="shot"><div class="phone"><img src="landing/community.jpg" alt="Community feed in NP App"></div></div>
+                    <h3>Share the moments</h3>
+                    <p>Photos and videos from the events, right in the Community feed.</p>
+                </article>
+            </div>
         </div>
-
-        <!-- <nav class="header-nav-wrap">
-            <ul class="header-nav">
-            </ul>
-        </nav> -->
-
-        <!-- <a class="header-menu-toggle" href="#0"><span>Menu</span></a> -->
-
-    </header> <!-- end s-header -->
-
-
-    <!-- hero
-    ================================================== -->
-    <section class="s-hero" data-parallax="scroll" data-image-src="DSC01056.jpg" data-natural-width=3000 data-natural-height=2000 data-position-y=center>
-
-        <div class="hero-left-bar"></div>
-
-        <div class="row hero-content">
-
-            <div class="column large-full hero-content__text">
-                <h1>
-                    A Space To <br>
-                    Make And Share <br>
-                    What Moves You
-                </h1>
-
-                <div class="hero-content__buttons">
-                    <a href="events.html" class="btn btn--stroke">Explore the Space</a>
-                </div>
-            </div> 
-
-        </div> <!-- end hero-content -->
-
-        <ul class="hero-social">
-            <li class="hero-social__title">Explore</li>
-            <li>
-                <a href="#about" class="smoothscroll">Art</a>
-            </li>
-            <li>
-                <a href="#about" class="smoothscroll">Music</a>
-            </li>
-            <li>
-                <a href="#about" class="smoothscroll">Poetry &amp; Film</a>
-            </li>
-        </ul> <!-- end hero-social -->
-
-        <div class="hero-scroll">
-            <a href="#about" class="scroll-link smoothscroll">
-                Scroll For More
-            </a>
-        </div> <!-- end hero-scroll -->
-
-    </section> <!-- end s-hero -->
-
-
-  
-
-  
-
- 
-    <!-- series
-    ================================================== -->
-    <section class="s-series" id="about">
-
-        <div class="series-img" style="background-image: url('DSC01022.jpg');"></div>
-
-        <div class="row row-y-center series-content">
-
-            <div class="column large-half medium-full">
-                <h3 class="subhead">New Project</h3>
-                <h2>Ideas Take Shape When We Make Room For Them.</h2>
-                <p>
-                New Project is a creative space for art, music, poetry, and film. A place to
-                experiment, share work, find inspiration, and connect with people who care
-                about making things. Come as you are, bring an idea, and see where it leads.
-                </p>
-            </div> <!-- end column -->
-
-            <div class="column large-half medium-full">
-                <div class="series-content__buttons">
-                    <a href="#top" class="btn btn--large h-full-width smoothscroll">Come make something</a>
-                </div>
-
-                <div class="series-content__subscribe">
-                    <p>
-                    There is no single way to create. Explore a medium, follow a curiosity,
-                    or bring something of your own.
-                    </p>
-                <!-- <ul class="series-content__subscribe-links">
-                        <li class="ss-apple-podcast"><a href="#about">Art</a></li>
-                        <li class="ss-instagram"><a href="#about">Art</a></li>
-                        <li class="ss-spotify"><a href="#about">Music</a></li>
-                        <li class="ss-soundcloud"><a href="#about">Poetry</a></li>
-                        <li class="ss-youtube"><a href="#about">Film</a></li>
-                    </ul> -->
-                    
-                    <ul class="series-content__subscribe-links">
-                        <!-- <li class="ss-spotify"><a href="#about">Music</a></li> -->
-                        <li class="ss-youtube"><a href="https://www.youtube.com/@newproject.np">Film</a></li>
-                        <li class="ss-soundcloud"><a href="#about">Poetry</a></li>
-                        <li class="ss-instagram"><a href="https://www.instagram.com/newproject.np" aria-label="Instagram">Instagram</a></li>
-                        <li class="ss-tiktok"><a href="https://www.tiktok.com/@newproject.np" aria-label="TikTok">TikTok</a></li>
-                    </ul>
-                </div>
-            </div> <!-- end column -->
-            
-        </div> <!-- series-content -->
-
-    </section> <!-- end s-series -->
-
-
-    <!-- app ================================================== -->
-    <section class="s-series s-app" id="app">
-
-        <div class="series-img" style="background-image: url('DSC01061.jpg');"></div>
-
-        <div class="row row-y-center series-content">
-            <div class="column large-half medium-full" style="margin-bottom: 50px;">
-                <div class="app-store-links">
-                    <a class="btn btn--stroke app-store-button" href="https://apps.apple.com/us/app/np-app/id6808212163" aria-label="Download NP App from the App Store" target="_blank" rel="noopener noreferrer">
-                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.37 12.58c.02 2.2 1.93 2.94 1.95 2.95-.02.05-.3 1.03-1 2.04-.6.87-1.22 1.74-2.2 1.76-.96.02-1.27-.57-2.37-.57-1.1 0-1.45.55-2.36.59-.95.04-1.67-.94-2.28-1.8-1.24-1.8-2.19-5.08-.92-7.3.63-1.1 1.76-1.8 2.99-1.82.93-.02 1.8.63 2.37.63.57 0 1.63-.78 2.75-.67.47.02 1.8.19 2.65 1.44-.07.04-1.58.92-1.58 2.75ZM14.57 6.9c.5-.6.83-1.43.74-2.26-.72.03-1.6.48-2.12 1.08-.47.54-.88 1.39-.77 2.2.81.06 1.64-.41 2.15-1.02Z"/></svg>
-                        <span><small>Download on the</small>App Store</span>
-                    </a>
-                    <a class="btn btn--stroke app-store-button" href="https://play.google.com/store/search?q=NP%20App%20New%20Project&amp;c=apps" aria-label="Find NP App on Google Play" target="_blank" rel="noopener noreferrer">
-                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 3.5v17L19 12 5 3.5Z"/></svg>
-                        <span><small>Get it on</small>Google Play</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="column large-half medium-full" style="margin-top: 50px;">
-                <h3 class="subhead mt-5" >New Project App</h3>
-                <h2>Find your next reason to get together.</h2>
-                <p>
-                Explore upcoming gatherings and discover more events through the New Project
-                app. Find something that speaks to you, bring a friend, and be part of what’s
-                happening.
-                </p>
-            </div>
-
+    </section>
+    <!-- Organizers, then the downloads again with the Android beta steps -->
+    <section class="wrap split band">
+        <div>
+            <h2>Create your own event</h2>
+            <p class="lead">Register as an organizer and publish your own events on NP App: set up tickets, see who is coming and check guests in at the door.</p>
+            <a class="store" href="https://apps.apple.com/app/id6808212163"><small>Download on the</small>App Store</a>
         </div>
-
-    </section> <!-- end app -->
-
- 
-    <!-- Creative disciplines ================================================== -->
-    <section class="s-social">
-        <div class="row social-content">
-            <div class="column">
-                <ul class="social-list">
-                    <li class="social-list__item">
-                        <a href="#0" title="">
-                            <span class="social-list__text">Art</span>
-                        </a>
-                    </li>
-                    <li class="social-list__item">
-                        <a href="#0" title="">
-                            <span class="social-list__text">Music</span>
-                        </a>
-                    </li>
-                    <li class="social-list__item">
-                        <a href="#0" title="">
-                            <span class="social-list__text">Poetry</span>
-                        </a>
-                    </li>
-                    <li class="social-list__item">
-                        <a href="#0" title="">
-                            <span class="social-list__text">Film</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div> <!-- end social-content -->
-
-    </section> <!-- end s-social -->
-
-
-    <!-- footer
-    ================================================== -->
-    <!-- <footer class="s-footer">
-
-        <div class="row footer-top">
-            <div class="column large-4 medium-5 tab-full">
-                <div class="footer-logo">
-                    <a class="site-footer-logo" href="index.html">
-                    </a>
-                </div>  
-                <p>
-                Laborum ad explicabo. Molestiae voluptates est. Quisquam labore tenetur 
-                et assumenda voluptatibus a beatae. Rerum odio ducimus reprehenderit 
-                sit animi laborum nostrum dolorum animi voluptates est voluptatibus a beatae. 
-                </p>
-            </div>
-            <div class="column large-half tab-full">
-                <div class="row">
-                    <div class="column large-7 medium-full">
-                        <h4 class="h6">Our Location</h4>
-                        <p>
-                        1600 Amphitheatre Parkway <br>
-                        Mountain View, California <br>
-                        94043 US
-                        </p>
-                    </div>
-                   <div class="column large-5 medium-full">
-                        <h4 class="h6">Quick Links</h4>
-                        <ul class="footer-list">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="volunteer.html">Volunteer</a></li>
-                            <li><a href="connect-group.html">Connect Groups</a></li>
-                            <li><a href="events.html">Upcoming Events</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div> 
-                </div>
-            </div>
-        </div> 
-        <div class="row footer-bottom">
-            <div class="column ss-copyright">
-                <span>© Copyright Newproject 2026</span> 
-            </div>
-        </div> 
-
-        <div class="ss-go-top">
-            <a class="smoothscroll" title="Back to Top" href="#top">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0l8 9h-6v15h-4v-15h-6z"/></svg>
-            </a>
-        </div> 
-
-    </footer>  -->
-
-    <!-- Java Script
-    ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-
+        <div id="android" class="steps">
+            <h3>Android beta</h3>
+            <p>Follow these steps from 1 to 3 in order to install.</p>
+            <a href="https://groups.google.com/g/np-beta" target="_blank">1. Join the beta group</a>
+            <a href="https://play.google.com/apps/testing/de.npapp.app" target="_blank">2. Become a beta</a>
+            <a href="https://play.google.com/store/apps/details?id=de.npapp.app">3. Install from Google Play</a>
+        </div>
+    </section>
+    <footer class="wrap foot"><a href="https://newproject.live">newproject.live</a></footer>
 </body>
+</html>

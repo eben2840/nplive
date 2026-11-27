@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <!-- Only this site's files may run; the page may only talk to the NP Supabase project. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' https:; connect-src https://dcnnaoygtxswlhctyktc.supabase.co; form-action 'none'; base-uri 'none'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' https:; font-src 'self'; connect-src https://dcnnaoygtxswlhctyktc.supabase.co; form-action 'none'; base-uri 'none'">
     <meta name="referrer" content="no-referrer">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Book on NP App | New Project</title>
@@ -12,11 +12,15 @@
     <meta property="og:description" content="Open this event in NP App to book your ticket.">
     <meta property="og:image" content="https://app.newproject.live/booking/app-icon.png">
     <link rel="icon" type="image/png" href="app-icon.png">
+    <link rel="stylesheet" href="/landing/base.css">
     <link rel="stylesheet" href="booking.css">
 </head>
 <body>
-    <div id="bg"></div>
-    <main>
+    <header class="top"><div class="bar stuck">
+        <a class="brand" href="/"><img src="/booking/app-icon.png" alt="">NP App</a>
+        <a class="get" href="/#get">Get the app</a>
+    </div></header>
+    <main class="wrap book">
         <!-- Left column: the event (event.js fills it) -->
         <div id="col-a">
             <section id="ev-head" class="panel" hidden>

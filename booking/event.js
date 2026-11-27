@@ -35,7 +35,6 @@
       $('wb-image').alt = e.title;
       $('wb-image').src = cover;
       $('ev-frame').hidden = false;
-      $('bg').style.backgroundImage = 'url("' + new URL(cover).href + '")';
     }
     $('ev-title').textContent = e.title;
     [MODES[e.mode], e.organizer_name].forEach(function (chip) {
@@ -90,7 +89,7 @@
     if (first) first.checked = true; else $('wb-form').querySelector('button').disabled = true;
     $('wb-types').addEventListener('change', syncAccess); syncAccess();
     $('webbook').hidden = false;
-    document.querySelector('main').className = 'two'; // two columns once there is an event
+    document.querySelector('main').classList.add('two'); // two columns once there is an event
   }
 
   load().catch(function () {});

@@ -19,9 +19,13 @@
   .cluster .p2 { top: 120px; left: 0; width: 226px; }
   .cluster .p3 { top: 140px; right: 0; width: 226px; }
 }
-.ticker { position: relative; z-index: 3; width: 106vw; margin: -36px 0 0 -3vw; padding: 15px 0;
-          overflow: hidden; background: #fff; color: var(--ink); white-space: nowrap;
-          transform: rotate(-2deg); box-shadow: 0 18px 44px rgba(13,13,16,.18); }
+/* The slanted strip is wider than the page; this band cuts its ends off, so nothing sticks out
+   sideways and the page cannot slide left and right. */
+.strip { position: relative; z-index: 3; margin: calc(-3vw - 36px) 0 -44px;
+         padding: 3vw 0 calc(3vw + 44px); overflow: hidden; pointer-events: none; }
+.ticker { width: 106%; margin-left: -3%; padding: 15px 0; overflow: hidden; background: #fff;
+          color: var(--ink); white-space: nowrap; transform: rotate(-2deg);
+          box-shadow: 0 18px 44px rgba(13,13,16,.18); }
 .ticker .track, .reel .track { display: inline-flex; }
 .ticker span { margin-right: 34px; font: 700 26px/1 "Bricolage", sans-serif; text-transform: uppercase; }
 .ticker span::after { content: '✦'; margin-left: 34px; opacity: .75; }

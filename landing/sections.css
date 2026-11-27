@@ -18,8 +18,8 @@
   .cluster .p3 { top: 140px; right: 0; width: 226px; }
 }
 .ticker { position: relative; z-index: 3; width: 106vw; margin: -36px 0 0 -3vw; padding: 15px 0;
-          overflow: hidden; background: var(--grad); color: #fff; white-space: nowrap;
-          transform: rotate(-2deg); box-shadow: 0 18px 44px rgba(255,61,129,.32); }
+          overflow: hidden; background: #fff; color: var(--ink); white-space: nowrap;
+          transform: rotate(-2deg); box-shadow: 0 18px 44px rgba(13,13,16,.18); }
 .ticker .track, .reel .track { display: inline-flex; }
 .ticker span { margin-right: 34px; font: 700 26px/1 "Bricolage", sans-serif; text-transform: uppercase; }
 .ticker span::after { content: '✦'; margin-left: 34px; opacity: .75; }

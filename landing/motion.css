@@ -1,19 +1,13 @@
 /* Everything that moves. With "reduce motion" switched on, the page stays still. */
 @keyframes float { 50% { translate: 0 -16px; } }
-@keyframes drift { 50% { transform: translate(70px, 46px) scale(1.18); } }
 @keyframes slide { to { transform: translateX(-50%); } }
-@keyframes shift { 50% { background-position: 100% 50%; } }
 @keyframes rise { from { opacity: 0; translate: 0 48px; } }
 .cluster .phone, .stage .phone, .chip, .pill { animation: float 6s ease-in-out infinite; }
 .cluster .p2, .chip.c2, .pill.b { animation-delay: -2s; }
 .cluster .p3, .pill.c { animation-delay: -4s; }
-.blob { animation: drift 16s ease-in-out infinite; }
-.blob.b { animation-duration: 21s; animation-direction: reverse; }
-.blob.c { animation-duration: 25s; }
 .ticker .track { animation: slide 26s linear infinite; }
 .reel .track { animation: slide 38s linear infinite; }
 .reel:hover .track { animation-play-state: paused; }
-.band { animation: shift 14s ease-in-out infinite; }
 /* The hero comes in on load; the rest rises as it scrolls into view (landing.js adds "in"). */
 .hero .kicker, .hero h1, .hero .lead, .hero .stores { animation: rise .9s var(--ease) backwards; }
 .hero h1 { animation-delay: .1s; } .hero .lead { animation-delay: .2s; } .hero .stores { animation-delay: .3s; }

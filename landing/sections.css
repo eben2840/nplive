@@ -29,16 +29,14 @@
         border-radius: 32px; transition: transform .45s var(--ease), box-shadow .45s; }
 .bento .tile:hover { transform: translateY(-8px) rotate(-.5deg); box-shadow: 0 30px 60px rgba(13,13,16,.16); }
 .tile p { max-width: 340px; margin-top: 12px; color: rgba(13,13,16,.7); }
-.t1 { background: #ffdfd3; } .t2 { background: #e5dcff; } .t3 { background: #ffe9b8; }
-.t4 { min-height: 0; padding-bottom: 170px; color: #fff;
-      background: radial-gradient(circle at 88% 96%, rgba(124,92,255,.6), transparent 52%),
-                  radial-gradient(circle at 52% 128%, rgba(255,90,54,.5), transparent 50%), var(--ink); }
+.t1 { border: 1px solid var(--line); background: var(--card); } .t2, .t3 { background: #e6e6e2; }
+.t4 { min-height: 0; padding-bottom: 170px; background: var(--ink); color: #fff; }
 .t4 p { color: rgba(255,255,255,.72); }
 .t4 .kicker { margin-bottom: 18px; border-color: rgba(255,255,255,.28); }
 .tile .phone { --r: -5deg; position: absolute; bottom: -190px; left: calc(50% - 108px); width: 216px;
                transition: transform .6s var(--ease); }
 .tile:hover .phone { transform: rotate(0deg) translateY(-18px); }
-.pill { position: absolute; padding: 12px 20px; border-radius: 99px; background: var(--grad); color: #fff;
+.pill { position: absolute; padding: 12px 20px; border-radius: 99px; background: var(--accent); color: #fff;
         font-size: 15px; box-shadow: 0 14px 30px rgba(0,0,0,.35); transform: rotate(var(--r, 0deg)); }
 .pill.a { --r: -7deg; right: 10%; bottom: 96px; }
 .pill.b { --r: 5deg; bottom: 34px; left: 34px; background: #fff; color: var(--ink); }

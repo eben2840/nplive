@@ -5,10 +5,9 @@
              src: url("fonts/Manrope-Regular.ttf") format("truetype"); }
 @font-face { font-family: "Manrope"; font-weight: 700; font-display: swap;
              src: url("fonts/Manrope-Bold.ttf") format("truetype"); }
-:root { --ink: #0d0d10; --paper: #f6f2ea; --card: #ffffff; --muted: #5d5a55; --line: rgba(13,13,16,.1);
-        --hot: #ff5a36; --pink: #ff3d81; --violet: #7c5cff;
-        --grad: linear-gradient(115deg, var(--hot), var(--pink) 48%, var(--violet));
-        --ease: cubic-bezier(.2,.8,.2,1); }
+/* Black and white, with one accent colour used sparingly. */
+:root { --ink: #0d0d10; --paper: #f4f4f1; --card: #ffffff; --muted: #5c5c59; --line: rgba(13,13,16,.1);
+        --accent: #ff5a36; --ease: cubic-bezier(.2,.8,.2,1); }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; overflow-x: hidden; background: var(--paper); color: var(--ink);
@@ -20,7 +19,7 @@ h2 { font-size: clamp(34px, 4.8vw, 60px); }
 h3 { font-size: clamp(23px, 2.4vw, 30px); line-height: 1.1; }
 p { margin: 0; color: var(--muted); }
 .wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 22px; }
-.grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.accent { color: var(--accent); }
 .kicker { display: inline-block; padding: 7px 14px; border: 1px solid var(--line); border-radius: 99px;
           font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .head { max-width: 780px; margin: 0 auto 56px; text-align: center; }
@@ -53,9 +52,3 @@ p { margin: 0; color: var(--muted); }
          overflow: hidden; background: #16161a; box-shadow: 0 40px 80px rgba(0,0,0,.35);
          transform: rotate(var(--r, 0deg)); }
 .phone img { display: block; width: 100%; }
-/* Soft colour clouds behind the dark areas. */
-.blob { position: absolute; width: 520px; height: 520px; border-radius: 50%; filter: blur(90px);
-        opacity: .55; pointer-events: none; }
-.blob.a { top: -160px; left: -140px; background: var(--hot); }
-.blob.b { top: 12%; right: -180px; background: var(--violet); }
-.blob.c { bottom: -260px; left: 32%; background: var(--pink); }

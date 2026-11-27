@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <!-- Static page: only this site's styles and images load, no scripts. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; form-action 'none'; base-uri 'none'">
+    <!-- Only this site's own files load: styles, fonts, images and one script for the motion. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; form-action 'none'; base-uri 'none'">
     <meta name="referrer" content="no-referrer">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>NP App | New Project</title>
@@ -12,62 +12,154 @@
     <meta property="og:description" content="Find events, reserve your ticket and share the moments.">
     <meta property="og:image" content="https://app.newproject.live/booking/app-icon.png">
     <link rel="icon" type="image/png" href="booking/app-icon.png">
-    <link rel="stylesheet" href="landing.css">
+    <link rel="stylesheet" href="landing/base.css">
+    <link rel="stylesheet" href="landing/sections.css">
+    <link rel="stylesheet" href="landing/more.css">
+    <link rel="stylesheet" href="landing/motion.css">
+    <script src="landing/landing.js"></script>
 </head>
 <body>
-    <header class="wrap top">
-        <a class="brand" href="/"><img src="booking/app-icon.png" alt="">NP App</a>
-    </header>
-    <!-- Hero: what the app is, the two downloads, the home screen -->
-    <section class="wrap split hero">
-        <div>
-            <h1>Art and creativity, all in one place</h1>
-            <p class="lead">NP App brings every New Project event to your phone: find events, reserve your ticket and share the moments.</p>
-            <div class="stores">
-                <a class="store" href="https://apps.apple.com/app/id6808212163"><small>Download on the</small>App Store</a>
-                <a class="store" href="#android"><small>Android beta on</small>Google Play</a>
-            </div>
-        </div>
-        <div class="stage"><div class="phone"><img src="landing/home.jpg" alt="NP App home screen"></div></div>
-    </section>
-    <section class="why">
+    <header class="top"><div class="bar">
+        <a class="brand" href="#top"><img src="booking/app-icon.png" alt="">NP App</a>
+        <a class="get" href="#get">Get the app</a>
+    </div></header>
+
+    <!-- Hero: what the app is, the two downloads, three floating screens -->
+    <section class="hero" id="top">
+        <i class="blob a"></i><i class="blob b"></i><i class="blob c"></i>
         <div class="wrap">
-            <p class="kicker">Our highlights</p>
-            <h2>Why you will love the app</h2>
-            <div class="cards">
-                <article class="card">
-                    <div class="shot"><div class="phone"><img src="landing/discover.jpg" alt="Event calendar in NP App"></div></div>
-                    <h3>Every event in one place</h3>
-                    <p>Concerts, festivals, workshops and online sessions, with search, filters and clear time and location details.</p>
-                </article>
-                <article class="card">
-                    <div class="shot"><div class="phone"><img src="landing/book.jpg" alt="Event page in NP App"></div></div>
-                    <h3>Booked in a few steps</h3>
-                    <p>Pick a ticket, check your details, done. Your ticket is reserved instantly.</p>
-                </article>
-                <article class="card">
-                    <div class="shot"><div class="phone"><img src="landing/community.jpg" alt="Community feed in NP App"></div></div>
-                    <h3>Share the moments</h3>
-                    <p>Photos and videos from the events, right in the Community feed.</p>
-                </article>
+            <div>
+                <span class="kicker">Free on iPhone · Android beta</span>
+                <h1>Art and creativity, <span class="grad">all in one place</span></h1>
+                <p class="lead">NP App brings every New Project event to your phone: find events, reserve your ticket and share the moments.</p>
+                <div class="stores">
+                    <a class="btn" href="https://apps.apple.com/app/id6808212163"><small>Download on the</small>App Store</a>
+                    <a class="btn ghost" href="#get"><small>Android beta on</small>Google Play</a>
+                </div>
+            </div>
+            <div class="cluster">
+                <div class="phone p2"><img src="landing/discover.jpg" alt="Event calendar in NP App"></div>
+                <div class="phone p3"><img src="landing/community.jpg" alt="Community feed in NP App"></div>
+                <div class="phone p1"><img src="landing/home.jpg" alt="NP App home screen"></div>
             </div>
         </div>
     </section>
-    <!-- Organizers, then the downloads again with the Android beta steps -->
-    <section class="wrap split band">
-        <div>
-            <h2>Create your own event</h2>
-            <p class="lead">Register as an organizer and publish your own events on NP App: set up tickets, see who is coming and check guests in at the door.</p>
-            <a class="store" href="https://apps.apple.com/app/id6808212163"><small>Download on the</small>App Store</a>
+    <div class="ticker" aria-hidden="true"><div class="track">
+        <span>Art</span><span>Music</span><span>Poetry</span><span>Film</span><span>Live sessions</span><span>Workshops</span>
+        <span>Art</span><span>Music</span><span>Poetry</span><span>Film</span><span>Live sessions</span><span>Workshops</span>
+    </div></div>
+
+    <section class="why wrap">
+        <div class="head reveal">
+            <span class="kicker">Our highlights</span>
+            <h2>Why you will <span class="grad">love</span> the app</h2>
         </div>
-        <div id="android" class="steps">
+        <div class="bento">
+            <article class="tile wide t1 reveal">
+                <h3>Every event in one place</h3>
+                <p>Concerts, festivals, workshops and online sessions, with search, filters and clear time and location details.</p>
+                <div class="phone"><img src="landing/discover.jpg" alt=""></div>
+            </article>
+            <article class="tile slim t2 reveal">
+                <h3>Booked in a few steps</h3>
+                <p>Pick a ticket, check your details, done. Your ticket is reserved instantly.</p>
+                <div class="phone"><img src="landing/book.jpg" alt=""></div>
+            </article>
+            <article class="tile slim t3 reveal">
+                <h3>Share the moments</h3>
+                <p>Photos and videos from the events, right in the Community feed.</p>
+                <div class="phone"><img src="landing/community.jpg" alt=""></div>
+            </article>
+            <article class="tile wide t4 reveal">
+                <span class="kicker">For organizers</span>
+                <h3>Create your own event</h3>
+                <p>Register as an organizer and publish your own events on NP App: set up tickets, see who is coming and check guests in at the door.</p>
+                <b class="pill a">Tickets</b><b class="pill b">Guest list</b><b class="pill c">Door check-in</b>
+            </article>
+        </div>
+    </section>
+
+    <section class="stats wrap">
+        <div class="head reveal">
+            <h2>A community that keeps growing</h2>
+        </div>
+        <div class="grid">
+            <div class="stat reveal"><b class="grad" data-count="160">160+</b><span>Members</span></div>
+            <div class="stat tilt reveal"><b class="grad" data-count="130">130+</b><span>Tickets reserved</span></div>
+            <div class="stat reveal"><b class="grad" data-count="3" data-plain="1">3</b><span>Events so far</span></div>
+        </div>
+    </section>
+
+    <section class="steps"><div class="wrap">
+        <div class="head reveal">
+            <span class="kicker">That easy</span>
+            <h2>Four steps to your next favourite night</h2>
+        </div>
+        <div class="cols">
+            <div>
+                <div class="step reveal"><i>01</i><div><h3>Download the app</h3><p>Free on the App Store. Android is in beta.</p></div></div>
+                <div class="step reveal"><i>02</i><div><h3>Create your account</h3><p>Sign up with your email, Apple or Google.</p></div></div>
+                <div class="step reveal"><i>03</i><div><h3>Find your event</h3><p>Search, filter and open any event for time, place and tickets.</p></div></div>
+                <div class="step reveal"><i>04</i><div><h3>Reserve and go</h3><p>Reserve your ticket and show its QR code at the door.</p></div></div>
+            </div>
+            <div class="stage">
+                <b class="chip c1">Ticket reserved</b><b class="chip c2">QR code ready</b>
+                <div class="phone"><img src="landing/book.jpg" alt="Event page in NP App"></div>
+            </div>
+        </div>
+    </div></section>
+
+    <!-- New Project in its own words, over real photos from the sessions -->
+    <section class="band">
+        <div class="wrap reveal">
+            <span class="kicker">New Project</span>
+            <h2>A creative space for art, music, poetry and film</h2>
+        </div>
+        <div class="reel"><div class="track">
+            <img src="landing/moment1.jpg" alt="Two artists on stage at a New Project session"><img src="landing/moment2.jpg" alt="Guests filming a New Project session"><img src="landing/moment3.jpg" alt="DJ at a New Project session"><img src="landing/moment4.jpg" alt="Musician at a New Project session">
+            <img src="landing/moment1.jpg" alt=""><img src="landing/moment2.jpg" alt=""><img src="landing/moment3.jpg" alt=""><img src="landing/moment4.jpg" alt="">
+        </div></div>
+    </section>
+
+    <section class="faq wrap"><div class="cols">
+        <div class="reveal">
+            <h2>FAQs</h2>
+            <p class="lead">Answers to the most common questions about NP App.</p>
+        </div>
+        <div>
+            <details class="reveal"><summary>Is the app free?</summary><p>Yes. NP App is free to download. Ticket prices are set per event.</p></details>
+            <details class="reveal"><summary>Do I need an account?</summary><p>To reserve a ticket, yes. Sign up with your email, Apple or Google.</p></details>
+            <details class="reveal"><summary>Is there an Android app?</summary><p>Yes, as a beta. Follow the three steps below to install it from Google Play.</p></details>
+            <details class="reveal"><summary>Can I reserve without the app?</summary><p>Yes. Every event has a web link where you can reserve with your email.</p></details>
+            <details class="reveal"><summary>Can I host my own event?</summary><p>Yes. Choose "Register as organizer" when you create your account, then create your event in the app.</p></details>
+        </div>
+    </div></section>
+
+    <!-- Downloads again, with the Android beta steps -->
+    <section class="cta wrap" id="get"><div class="box reveal">
+        <i class="blob a"></i><i class="blob b"></i>
+        <div>
+            <h2>Get NP App</h2>
+            <p>Free on the App Store. On Android, join the beta in three steps.</p>
+            <a class="btn" href="https://apps.apple.com/app/id6808212163"><small>Download on the</small>App Store</a>
+        </div>
+        <div class="beta">
             <h3>Android beta</h3>
             <p>Follow these steps from 1 to 3 in order to install.</p>
             <a href="https://groups.google.com/g/np-beta" target="_blank">1. Join the beta group</a>
             <a href="https://play.google.com/apps/testing/de.npapp.app" target="_blank">2. Become a beta</a>
             <a href="https://play.google.com/store/apps/details?id=de.npapp.app">3. Install from Google Play</a>
         </div>
-    </section>
-    <footer class="wrap foot"><a href="https://newproject.live">newproject.live</a></footer>
+    </div></section>
+
+    <footer class="foot wrap">
+        <a class="brand" href="#top"><img src="booking/app-icon.png" alt="">NP App</a>
+        <nav>
+            <a href="https://www.instagram.com/newproject.np">Instagram</a>
+            <a href="https://www.tiktok.com/@newproject.np">TikTok</a>
+            <a href="https://www.youtube.com/@newproject.np">YouTube</a>
+            <a href="https://newproject.live">newproject.live</a>
+        </nav>
+    </footer>
 </body>
 </html>

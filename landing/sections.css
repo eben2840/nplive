@@ -1,0 +1,63 @@
+/* Hero, the moving word strip, the highlight tiles and the numbers. */
+.hero { position: relative; overflow: hidden; padding-top: 150px; border-radius: 0 0 44px 44px;
+        background: var(--ink); color: #fff; }
+.hero .wrap { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px;
+              align-items: center; }
+.hero .kicker { margin-bottom: 24px; border-color: rgba(255,255,255,.28); }
+.hero .lead { max-width: 500px; color: rgba(255,255,255,.78); }
+.cluster { position: relative; height: 480px; }
+.cluster .phone { position: absolute; }
+.cluster .p1 { z-index: 2; top: 20px; left: calc(50% - 118px); width: 236px; }
+.cluster .p2 { --r: -10deg; top: 100px; left: -24px; width: 186px; }
+.cluster .p3 { --r: 10deg; top: 120px; right: -24px; width: 186px; }
+@media (min-width: 940px) {
+  .hero .wrap { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); }
+  .cluster { height: 620px; }
+  .cluster .p1 { left: calc(50% - 142px); width: 284px; }
+  .cluster .p2 { top: 120px; left: 0; width: 226px; }
+  .cluster .p3 { top: 140px; right: 0; width: 226px; }
+}
+.ticker { position: relative; z-index: 3; width: 106vw; margin: -36px 0 0 -3vw; padding: 15px 0;
+          overflow: hidden; background: var(--grad); color: #fff; white-space: nowrap;
+          transform: rotate(-2deg); box-shadow: 0 18px 44px rgba(255,61,129,.32); }
+.ticker .track, .reel .track { display: inline-flex; }
+.ticker span { margin-right: 34px; font: 700 26px/1 "Bricolage", sans-serif; text-transform: uppercase; }
+.ticker span::after { content: '✦'; margin-left: 34px; opacity: .75; }
+.why { padding-top: 120px; padding-bottom: 100px; }
+.bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 20px; }
+.tile { position: relative; grid-column: span 6; min-height: 540px; padding: 34px; overflow: hidden;
+        border-radius: 32px; transition: transform .45s var(--ease), box-shadow .45s; }
+.bento .tile:hover { transform: translateY(-8px) rotate(-.5deg); box-shadow: 0 30px 60px rgba(13,13,16,.16); }
+.tile p { max-width: 340px; margin-top: 12px; color: rgba(13,13,16,.7); }
+.t1 { background: #ffdfd3; } .t2 { background: #e5dcff; } .t3 { background: #ffe9b8; }
+.t4 { min-height: 0; padding-bottom: 170px; color: #fff;
+      background: radial-gradient(circle at 88% 96%, rgba(124,92,255,.6), transparent 52%),
+                  radial-gradient(circle at 52% 128%, rgba(255,90,54,.5), transparent 50%), var(--ink); }
+.t4 p { color: rgba(255,255,255,.72); }
+.t4 .kicker { margin-bottom: 18px; border-color: rgba(255,255,255,.28); }
+.tile .phone { --r: -5deg; position: absolute; bottom: -190px; left: calc(50% - 108px); width: 216px;
+               transition: transform .6s var(--ease); }
+.tile:hover .phone { transform: rotate(0deg) translateY(-18px); }
+.pill { position: absolute; padding: 12px 20px; border-radius: 99px; background: var(--grad); color: #fff;
+        font-size: 15px; box-shadow: 0 14px 30px rgba(0,0,0,.35); transform: rotate(var(--r, 0deg)); }
+.pill.a { --r: -7deg; right: 10%; bottom: 96px; }
+.pill.b { --r: 5deg; bottom: 34px; left: 34px; background: #fff; color: var(--ink); }
+.pill.c { --r: -3deg; right: 6%; bottom: 28px; background: #26262c; }
+@media (min-width: 900px) {
+  .tile { min-height: 470px; }
+  .tile.wide { grid-column: span 4; } .tile.slim { grid-column: span 2; }
+  .tile.slim { min-height: 540px; }
+  .tile.wide .phone { --r: 7deg; right: 54px; bottom: -170px; left: auto; width: 240px; }
+  .t4 { padding: 44px; }
+  .pill.a { right: 12%; bottom: 46%; } .pill.b { right: 34%; bottom: 14%; left: auto; }
+  .pill.c { bottom: 12%; }
+}
+.stats { padding-bottom: 120px; }
+.stats .head { margin-bottom: 44px; }
+.stats .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.stat { padding: 34px; border: 1px solid var(--line); border-radius: 30px; background: var(--card);
+        transition: transform .45s var(--ease); }
+.stat.tilt { transform: rotate(-2deg); }
+.stats .stat:hover { transform: translateY(-8px) rotate(1deg); }
+.stat b { display: block; font: 700 clamp(64px, 8vw, 104px)/1 "Bricolage", sans-serif; letter-spacing: -0.04em; }
+.stat span { display: block; margin-top: 10px; font-weight: 700; }

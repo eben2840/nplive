@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- Only this site's files run; the page only talks to the NP database for the events. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' https:; font-src 'self'; connect-src https://dcnnaoygtxswlhctyktc.supabase.co; form-action 'none'; base-uri 'none'">
+    <meta name="referrer" content="no-referrer">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Events | NP App</title>
+    <meta name="description" content="All New Project events: find one and reserve your ticket.">
+    <meta property="og:title" content="Events | NP App">
+    <meta property="og:description" content="All New Project events: find one and reserve your ticket.">
+    <meta property="og:image" content="https://app.newproject.live/booking/app-icon.png">
+    <link rel="icon" type="image/png" href="/booking/app-icon.png">
+    <link rel="stylesheet" href="/landing/base.css">
+    <link rel="stylesheet" href="/landing/more.css">
+    <link rel="stylesheet" href="/events/events.css">
+</head>
+<body>
+    <header class="top"><div class="bar stuck">
+        <a class="brand" href="/"><img src="/booking/app-icon.png" alt="">NP App</a>
+        <a class="get" href="/#get">Get the app</a>
+    </div></header>
+
+    <main class="wrap list">
+        <h1>Events</h1>
+        <p class="lead">Everything happening at New Project. Pick one and reserve your ticket.</p>
+        <!-- Search and the day filters; events.js applies them to the loaded events -->
+        <div class="tools">
+            <input id="search" type="search" placeholder="Search events or places" autocomplete="off">
+            <div class="chips" id="chips">
+                <button type="button" data-when="all" class="on">All</button>
+                <button type="button" data-when="today">Today</button>
+                <button type="button" data-when="tomorrow">Tomorrow</button>
+                <button type="button" data-when="weekend">Weekend</button>
+            </div>
+        </div>
+
+        <p id="note" class="note">Loading events…</p>
+        <!-- The next event, large; then the rest; then what already took place -->
+        <section id="featured" hidden></section>
+        <section id="upcoming" hidden>
+            <h2>More upcoming events</h2>
+            <div class="grid" id="upcoming-list"></div>
+        </section>
+        <section id="past" hidden>
+            <h2>Past events</h2>
+            <div class="reel-row" id="past-list"></div>
+        </section>
+
+        <section class="app">
+            <div>
+                <h2>Your tickets in your pocket</h2>
+                <p>Get NP App to keep your tickets, hear about new events first and share the moments.</p>
+            </div>
+            <a class="go" href="/#get">Get the app</a>
+        </section>
+    </main>
+
+    <footer class="foot wrap">
+        <a class="brand" href="/"><img src="/booking/app-icon.png" alt="">NP App</a>
+        <nav>
+            <a href="https://www.instagram.com/newproject.np">Instagram</a>
+            <a href="https://www.tiktok.com/@newproject.np">TikTok</a>
+            <a href="https://www.youtube.com/@newproject.np">YouTube</a>
+            <a href="https://newproject.live">newproject.live</a>
+        </nav>
+    </footer>
+    <script src="/events/data.js"></script>
+    <script src="/events/events.js"></script>
+</body>
+</html>

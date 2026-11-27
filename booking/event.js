@@ -78,7 +78,8 @@
     var events = await NP.api('/rest/v1/events?select=title,status,description,cover_image_path,' +
       'organizer_name,mode,starts_at,ends_at,time_zone,venue_name,street,house_number,postal_code,city,' +
       'attendee_instructions,cancellation_policy&id=eq.' + NP.eventId);
-    if (!events.length || events[0].status !== 'published') return;
+    // A sold-out event still shows, with every ticket marked as sold out.
+    if (!events.length || ['published', 'sold_out'].indexOf(events[0].status) < 0) return;
     var types = await NP.api('/rest/v1/ticket_types?select=id,name,gross_price_cents,is_free,is_reserved,' +
       'is_private,quantity_total,quantity_reserved&order=sort_order&event_id=eq.' + NP.eventId);
     var open = types.filter(function (t) { return t.is_free; }); // private ones ask for their code

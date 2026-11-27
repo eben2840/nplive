@@ -1,23 +1,11 @@
-/* The events page: search and day filters, the next event large, cards, past events, app box. */
+/* The events page: every event as the same card, upcoming first, then past, then the app box. */
 .list { padding-top: 130px; }
 .list > h1 { font-size: clamp(46px, 7vw, 88px); }
+.list > .lead { margin-bottom: 44px; }
 .list h2 { margin-bottom: 22px; font-size: clamp(26px, 3vw, 38px); }
 .list > section { margin-bottom: 64px; }
-.tools { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 44px; }
-#search { flex: 1 1 260px; max-width: 420px; padding: 14px 22px; border: 1px solid var(--line);
-          border-radius: 99px; background: var(--card); color: var(--ink); font: inherit; outline: 0;
-          transition: border-color .3s, box-shadow .3s; }
-#search:focus { border-color: var(--ink); box-shadow: 0 10px 26px rgba(13,13,16,.1); }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chips button { padding: 12px 18px; border: 1px solid var(--line); border-radius: 99px;
-                background: var(--card); color: var(--ink); font: 700 14px/1 "Manrope", sans-serif;
-                cursor: pointer; transition: background .3s, color .3s, transform .3s var(--ease); }
-.chips button:hover { transform: translateY(-2px); }
-.chips button.on { border-color: var(--ink); background: var(--ink); color: #fff; }
 .note { padding: 56px 0; font-weight: 700; text-align: center; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 22px; }
-.reel-row { display: flex; gap: 20px; padding-bottom: 14px; overflow-x: auto; scroll-snap-type: x proximity; }
-.reel-row .card { flex: 0 0 270px; scroll-snap-align: start; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; }
 /* One event: its flyer, then when, what, where and the price. */
 @keyframes rise { from { opacity: 0; translate: 0 30px; } }
 .card { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line);
@@ -38,19 +26,11 @@ div.card .pic img { filter: grayscale(1); opacity: .85; }
 .price { margin-top: 4px; font-weight: 700; }
 .tag { margin-top: 6px; padding: 4px 11px; border: 1px solid var(--line); border-radius: 99px;
        font-size: 12px; font-weight: 700; }
-.go { display: inline-block; margin-top: 18px; padding: 15px 26px; border-radius: 99px;
-      background: var(--ink); color: #fff; font-weight: 700; text-decoration: none;
-      transition: transform .3s var(--ease); }
-a.card:hover .go, a.go:hover { transform: scale(1.05); }
-@media (min-width: 860px) {
-  .card.feature { flex-direction: row; }
-  .feature .pic { flex: 1.15; min-height: 440px; aspect-ratio: auto; }
-  .feature .txt { flex: 1; justify-content: center; padding: 48px; }
-  .feature h3 { font-size: clamp(32px, 3.6vw, 48px); }
-}
 .app { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; justify-content: space-between;
        padding: 44px; border-radius: 32px; background: var(--ink); color: #fff; }
 .app h2 { margin-bottom: 8px; }
 .app p { max-width: 520px; color: rgba(255,255,255,.76); }
-.app .go { margin: 0; background: #fff; color: var(--ink); }
+.go { display: inline-block; padding: 15px 26px; border-radius: 99px; background: #fff;
+      color: var(--ink); font-weight: 700; text-decoration: none; transition: transform .3s var(--ease); }
+.go:hover { transform: scale(1.05); }
 @media (prefers-reduced-motion: reduce) { .card { animation: none; } * { transition: none !important; } }

@@ -5,6 +5,8 @@
               align-items: center; }
 .hero .kicker { margin-bottom: 24px; border-color: rgba(255,255,255,.28); }
 .hero .lead { max-width: 500px; color: rgba(255,255,255,.78); }
+.hero .more { display: inline-block; margin-top: 24px; padding-bottom: 3px; color: #fff; font-weight: 700;
+              text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.45); }
 .cluster { position: relative; height: 480px; }
 .cluster .phone { position: absolute; }
 .cluster .p1 { z-index: 2; top: 20px; left: calc(50% - 118px); width: 236px; }

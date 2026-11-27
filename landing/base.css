@@ -39,6 +39,10 @@ p { margin: 0; color: var(--muted); }
 .get { padding: 11px 20px; border-radius: 99px; background: #fff; color: var(--ink); font-size: 15px;
        font-weight: 700; text-decoration: none; transition: transform .3s var(--ease); }
 .get:hover { transform: scale(1.06); }
+.links { display: flex; align-items: center; gap: 4px; }
+.links a:not(.get) { padding: 11px 14px; color: #fff; font-size: 15px; font-weight: 700;
+                     text-decoration: none; opacity: .82; transition: opacity .3s; }
+.links a:not(.get):hover { opacity: 1; }
 .stores { display: flex; flex-wrap: wrap; gap: 12px; }
 .btn { display: inline-flex; flex-direction: column; justify-content: center; min-width: 178px;
        padding: 10px 24px 12px; border: 1px solid #fff; border-radius: 16px; background: #fff;

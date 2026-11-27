@@ -5,6 +5,8 @@
 (function () {
   if (window.top !== window.self) { document.body.hidden = true; return; } // refuse to be framed
   var $ = function (id) { return document.getElementById(id); };
+  // The app box waits for the event, so the page never shows it alone first.
+  function settle() { $('loading').hidden = true; $('app').hidden = false; }
 
   var BASE = 'https://dcnnaoygtxswlhctyktc.supabase.co';
   var KEY = 'sb_publishable_T-0xOKcMcfv7LaElPlf_MQ__IUyoF64'; // public key, same as in the app; the database rules protect the data
@@ -17,7 +19,7 @@
     ACCESS_CODE_INVALID: 'Wrong access code.'
   };
   var eventId = new URLSearchParams(location.search).get('id') || '';
-  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(eventId)) return;
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(eventId)) return settle(); // no event: only the app box
   var val = function (id) { return $(id).value.trim(); };
 
   async function api(path, body, token) {
@@ -88,5 +90,5 @@
     await reserve(button);
   });
 
-  window.NP = { $: $, api: api, eventId: eventId }; // for event.js
+  window.NP = { $: $, api: api, eventId: eventId, settle: settle }; // for event.js
 })();

@@ -21,6 +21,8 @@
         <a class="get" href="/#get">Get the app</a>
     </div></header>
     <main class="wrap book">
+        <!-- Shown until event.js knows what this link is about; then everything appears together -->
+        <p id="loading" class="loading">Loading event…</p>
         <!-- Left column: the event (event.js fills it) -->
         <div id="col-a">
             <section id="ev-head" class="panel" hidden>
@@ -64,7 +66,7 @@
                 <p id="wb-done" hidden></p>
                 <p id="wb-err"></p>
             </section>
-            <section id="app" class="panel pad">
+            <section id="app" class="panel pad" hidden>
                 <img class="icon" src="app-icon.png" alt="NP App">
                 <h2 class="big">Book on NP App</h2>
                 <p>Get the NP App to see this event and book your ticket.</p>

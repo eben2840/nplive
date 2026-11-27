@@ -92,5 +92,5 @@
     document.querySelector('main').classList.add('two'); // two columns once there is an event
   }
 
-  load().catch(function () {});
+  load().catch(function () {}).then(NP.settle);
 })();

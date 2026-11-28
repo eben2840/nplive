@@ -1,0 +1,24 @@
+/* Door check-in: big buttons and clear colours for a phone at the entrance. */
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: #f4f4f3; color: #0b0b0c;
+       font: 16px/1.4 -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+main { max-width: 520px; margin: 0 auto; padding: 20px 16px 60px; }
+h1 { margin: 0 0 16px; font-size: 24px; }
+button { width: 100%; padding: 16px; margin-bottom: 12px; border: 0; border-radius: 14px;
+         background: #0b0b0c; color: #fff; font: 700 16px/1 inherit; cursor: pointer; }
+button.ghost { background: #e2e2e0; color: #0b0b0c; }
+button.small { width: auto; padding: 10px 14px; margin: 0; font-size: 14px; }
+button:disabled { opacity: .45; }
+video { display: block; width: 100%; margin-bottom: 12px; border-radius: 14px; background: #000; }
+input { width: 100%; padding: 14px 16px; margin: 8px 0 12px; border: 1px solid #c9c9c6;
+        border-radius: 14px; font-size: 16px; background: #fff; }
+.msg { padding: 18px; margin-bottom: 12px; border-radius: 14px; font-weight: 700; color: #fff; }
+.msg small { display: block; margin-top: 4px; font-weight: 400; }
+.msg button { margin: 12px 0 0; background: #fff; color: #0b0b0c; }
+.ok { background: #1f8a4c; } .warn { background: #c77700; } .bad { background: #c62828; }
+ul { margin: 0; padding: 0; list-style: none; }
+li { display: flex; gap: 10px; align-items: center; justify-content: space-between; padding: 12px 14px;
+     margin-bottom: 8px; border-radius: 14px; background: #fff; }
+li b { display: block; } li small { color: #6b6b68; }
+li .acts { display: flex; gap: 6px; flex-shrink: 0; }

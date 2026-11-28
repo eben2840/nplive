@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <!-- Temporary door check-in for Session 004. Works only with the key after # in the link. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; media-src 'self' blob:; connect-src https://dcnnaoygtxswlhctyktc.supabase.co; form-action 'none'; base-uri 'none'">
+    <meta name="referrer" content="no-referrer">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Check-in · Session 004</title>
+    <link rel="stylesheet" href="checkin.css">
+</head>
+<body>
+    <main>
+        <h1>Check-in · Session 004</h1>
+        <p id="locked" class="msg bad" hidden>Kein Zugang · No access</p>
+        <section id="door" hidden>
+            <button id="cam" type="button">QR scannen · Scan QR</button>
+            <div id="view" hidden>
+                <video id="video" playsinline muted></video>
+                <button id="stop" type="button" class="ghost">Kamera aus · Stop</button>
+            </div>
+            <div id="result" hidden></div>
+            <input id="q" type="search" placeholder="Name suchen · Search name" autocomplete="off">
+            <ul id="list"></ul>
+        </section>
+    </main>
+    <script src="jsQR.min.js"></script>
+    <script src="scan.js"></script>
+    <script src="checkin.js"></script>
+</body>
+</html>

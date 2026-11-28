@@ -48,8 +48,15 @@
     box.hidden = false;
   }
 
+  // Abendkasse: the 15 € door sale as its own total, apart from paid / to pay.
+  async function doorSale() {
+    try { const d = await api('doorsale', {}); $('abend').textContent = `Abendkasse: ${d.count} × 15 € = ${euro(d.cents)}`; } catch { /* keeps the last total */ }
+  }
+  doorSale();
+
   async function checkIn(by) {
     try { showResult(await api('scan', by)); } catch { showResult({ result: 'invalid', code: 'NETZ · NETWORK' }); }
+    doorSale();
     if (q.value.trim().length >= 2) runSearch();
   }
 
